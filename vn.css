@@ -1,0 +1,2539 @@
+
+body {
+    font-family: 'Bahnschrift Condensed', Arial, sans-serif;
+    margin: 0;
+    padding-top: 90px; /* Khoảng cách để tránh Header che mất nội dung */
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* --- HEADER VÀ NAVIGATION --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:30px 40px;
+     background: linear-gradient(to right, #D42D2D 40%, #FF4500 80%, #FFD700 100%); 
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header .logo {
+    font-size: 2rem;
+    color: white;
+    font-family: 'Dancing Script', cursive; 
+    margin: 0;
+}
+
+.dropdown {
+     position: relative;
+    display: inline-block; 
+}
+
+/* Ẩn Mega Menu mặc định */
+.mega-menu {
+    display:  block;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: fixed; 
+    
+    width: 100vw;
+    left: 0;    
+    top: 90px;   
+    
+    height: 80vh; 
+     background: linear-gradient(to right, #D42D2D 40%, #FF4500 80%, #FFD700 100%);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 999; 
+    padding: 30px 0; 
+    box-sizing: border-box;
+    overflow-y: auto; 
+}
+.mega-menu.open {
+    opacity: 1;
+    visibility: visible;
+}
+.dropdown:hover .mega-menu {
+    display: block;
+}
+
+.mega-menu-content {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 40px;
+    width: 100%;
+}
+
+.menu-col {
+    flex: 1; /* Tỷ lệ 1:1:1:1 cho 4 cột */
+    padding: 0 20px;
+    /* Đường kẻ phân chia cột */
+    border-right: 1px solid rgba(255, 255, 255, 0.3); 
+    text-align: left;
+}
+
+/* Xóa đường kẻ ở cột cuối cùng */
+.menu-col:last-child {
+    border-right: none;
+}
+
+/* Kiểu dáng Tiêu đề cột */
+.menu-col .col-title {
+    color: #fff;
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #fff; /* Đường kẻ dưới tiêu đề */
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Kiểu dáng các link trong cột */
+.menu-col a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 0;
+    font-size: 100px;
+    font-weight: normal; 
+    transition: color 0.2s;
+}
+
+.menu-col a:hover {
+    color: #68051B; /* Màu đen để tăng độ tương phản khi hover */
+}
+
+/* Điều chỉnh lại Navbar trên Desktop để chứa Mega Menu */
+.navbar {
+    display: flex;
+    gap: 30px;
+    align-items: center; /* Căn giữa link menu theo chiều dọc */
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu-icon {
+    display: none; /* Ẩn icon menu trên máy tính */
+}
+
+/* --- MAIN CONTENT / HERO BANNER --- */
+.main-content {
+    position: relative;
+    height: 90vh; /* Chiều cao lớn cho Banner */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.combo-section {
+    padding: 60px 20px;
+    background-color: #f0f0f0; /* Màu nền nhẹ nhàng */
+    text-align: center;
+}
+
+.combo-section h2 {
+    color: #D42D2D; /* Màu đỏ Việt Nam */
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.combo-section p {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.combo-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Cho phép xuống dòng trên mobile */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.combo-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px;
+    width: calc(33.33% - 20px); /* 3 cột trên desktop */
+    min-width: 300px; /* Chiều rộng tối thiểu cho mobile */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.combo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.combo-card.highlight {
+    /* Tạo điểm nhấn cho combo đặc biệt (Ví dụ: combo bán chạy nhất) */
+    border: 3px solid #FF4500; /* Viền màu Cam Canada */
+    background-color: #fffaf0; /* Màu nền vàng nhạt */
+}
+
+.combo-title {
+    font-size: 1.5rem;
+    color: #FF4500; /* Màu cam Canada */
+    border-bottom: 2px dashed #D42D2D;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.combo-list p {
+    font-size: 1rem;
+    color: #444;
+    margin: 8px 0;
+    line-height: 1.5;
+    padding-left: 20px;
+    position: relative;
+}
+.combo-list p::before {
+    content: "✔️";
+    position: absolute;
+    left: 0;
+    color: #1a8a29; /* Màu xanh lá cây */
+    font-size: 0.9rem;
+}
+
+.combo-price {
+    text-align: center;
+    margin: 25px 0 15px;
+}
+
+.old-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 1.2rem;
+    margin-right: 15px;
+}
+
+.new-price {
+    color: #D42D2D;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.btn-combo {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #D42D2D;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-combo:hover {
+    background-color: #FF4500; /* Chuyển sang màu cam khi hover */
+}
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 767px) {
+    .combo-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .combo-container {
+        gap: 15px;
+    }
+    .combo-section h2 {
+        font-size: 2rem;
+    }
+    .new-price {
+        font-size: 1.8rem;
+    }
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Lớp phủ đen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-content p {
+    font-size: 60px;
+    color: white;
+    margin-bottom: 30px;
+}
+.overlay-content {
+    /* Đảm bảo nội dung căn giữa */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Kiểu dáng cho container tìm kiếm */
+.search-bar-container {
+    display: flex;
+    width: 90%;
+    max-width: 650px; /* Chiều rộng tối đa */
+    border-radius: 50px; /* Bo tròn tuyệt đối */
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hiệu ứng khi focus/active (dùng JS để thêm class này) */
+.search-bar-container.active {
+    transform: scale(1.05); /* Phóng to nhẹ khi focus */
+    box-shadow: 0 10px 30px rgba(255, 69, 0, 0.7); /* Hiệu ứng glow */
+}
+
+/* Kiểu dáng cho ô nhập liệu */
+#main-search-input {
+    flex-grow: 1;
+    padding: 18px 30px;
+    border: none;
+    font-size: 1.2rem;
+    color: #333;
+    outline: none;
+}
+
+/* Placeholder màu xám nhạt */
+#main-search-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Kiểu dáng cho nút TÌM KIẾM */
+#main-search-button {
+    padding: 15px 30px;
+    border: none;
+    background: linear-gradient(to right, #D42D2D, #FF4500); /* Màu đỏ-cam VN/Canada */
+    color: white;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+#main-search-button:hover {
+    background: linear-gradient(to right, #FF4500, #D42D2D);
+    opacity: 0.9;
+}
+
+/* Icon tìm kiếm */
+#main-search-button i {
+    margin-right: 10px;
+}
+
+
+/* --- MOBILE RESPONSIVE CHO THANH TÌM KIẾM --- */
+@media (max-width: 767px) {
+    .search-bar-container {
+        width: 95%;
+        border-radius: 10px; /* Giảm độ bo tròn trên mobile */
+    }
+    
+    #main-search-input {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+    
+    #main-search-button {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+    /* Ẩn chữ TÌM KIẾM, chỉ giữ lại icon trên mobile */
+    #main-search-button span {
+        display: none; 
+    }
+}
+
+.btn-link {
+    display: inline-block;
+    background-color: #FF5733;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* --- KHU VỰC GIỚI THIỆU (DIV KV) --- */
+.kv-section {
+    padding: 40px 0;
+    background-color: white;
+}
+.kv {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 3px dashed #333; 
+    text-align: center;
+}
+
+.kv h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #007BFF;
+}
+
+/* --- KHU VỰC SẢN PHẨM TRƯỢT NGANG (CAROUSEL) --- */
+.product-showcase {
+    padding: 60px 0;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.product-showcase h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.product-list-wrapper {
+    overflow: hidden; /* ẨN CÁC SẢN PHẨM TRÙNG LẶP */
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.product-list {
+    display: flex; /* Đặt tất cả sản phẩm trên một hàng */
+    scroll-behavior: smooth;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* Ẩn thanh cuộn mặc định */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.product-list::-webkit-scrollbar {
+    display: none;
+}
+
+.product-item {
+    min-width: 280px; /* Kích thước cố định của sản phẩm */
+    margin: 0 15px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    text-align: center;
+    flex-shrink: 0; /* NGĂN SẢN PHẨM CO LẠI */
+}
+
+.nav-arrow {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    z-index: 10;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+/* --- FOOTER VÀ LIÊN HỆ --- */
+.footer {
+    background-color: #ffffff;
+    color: white;
+    padding: 40px 60px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+/* Điều chỉnh vị trí sang trái cho Map và Contact */
+.footer-contact, .footer-map {
+    margin-left: -30px; 
+    /* Dịch chuyển sang trái 30px trên Desktop */
+}
+
+.logo-with-socials-container {
+    width: 250px; /* Kích thước logo footer trên desktop */
+    margin-bottom: 20px;
+}
+
+.footer-map iframe {
+    width: 350px;
+    height: 250px;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.footer-contact p {
+    margin: 0 0 10px 0;
+}
+
+.footer-contact a {
+    color: #87CEEB;
+    text-decoration: none;
+}
+
+/* DÒNG BẢN QUYỀN */
+.footer-copyright {
+    text-align: center;
+    color: #b0b0b0;
+    font-size: 0.85rem;
+    padding: 20px 30px 10px; /* Điều chỉnh padding bottom nhỏ lại */
+    width: 100%; 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 10px; /* Điều chỉnh margin top nhỏ lại */
+}
+
+
+@media (max-width: 767px) {
+    
+    body {
+        padding-top: 60px; /* Chỉnh lại padding-top cho điện thoại */
+    }
+
+    /* --- HEADER VÀ NAV BAR (Mobile) --- */
+    .header {
+        padding: 10px 20px;
+        justify-content: space-between;
+    }
+
+    .header .logo {
+        font-size: 1.5rem;
+    }
+
+    .menu-icon {
+        display: block; /* Hiển thị icon menu */
+        font-size: 1.5rem;
+    }
+
+    .navbar {
+        display: none; /* Ẩn menu mặc định */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Nằm ngay dưới header */
+        left: 0;
+        width: 100%;
+        background-color: #007BFF;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+    }
+    
+    .navbar.active {
+        display: flex; /* Hiển thị menu khi có class 'active' */
+    }
+
+    .navbar a {
+        padding: 10px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* --- MAIN CONTENT (Mobile) --- */
+    .overlay-content p {
+        font-size: 40px; /* Kích thước chữ Quang Huy Water đã chỉnh */
+        margin-bottom: 15px;
+    }
+
+    .btn-link {
+        font-size: 16px; /* Kích thước chữ nút Đặt hàng đã chỉnh */
+        padding: 8px 16px;
+    }
+
+    /* --- KHU VỰC GIỚI THIỆU (KV Mobile) --- */
+    .kv {
+        padding: 15px;
+        margin: 0 10px;
+        border-width: 1px; /* Độ dày border đã chỉnh */
+    }
+    
+    .kv h2 {
+        font-size: 2rem;
+    }
+    
+    /* --- KHU VỰC SẢN PHẨM TRƯỢT NGANG (CAROUSEL Mobile) --- */
+    .nav-arrow {
+        padding: 8px 12px;
+        font-size: 1.2rem;
+    }
+
+    /* --- FOOTER VÀ LIÊN HỆ (Mobile) --- */
+    .footer {
+        flex-direction: column;
+        padding: 20px 20px 0;
+        text-align: center;
+    }
+    
+    /* Đảm bảo không còn margin âm trên mobile */
+    .footer-contact, .footer-map {
+        margin-left: 0; 
+    }
+
+    .logo-with-socials-container {
+        width: 100%;
+    }
+
+    .social-links {
+        justify-content: center; /* Căn giữa icon social */
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .footer-map iframe {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .footer-copyright {
+        font-size: 0.75rem;
+        padding: 15px 20px 5px; 
+        margin-top: 5px;
+    }
+}
+.product-listing-page {
+    padding: 0;
+}
+
+/* BANNER SÁNG TẠO */
+.banner-ngot {
+    padding: 80px 20px;
+    margin-top: -30px; 
+    text-align: center;
+    background: linear-gradient(135deg, #D42D2D 0%, #FF4500 60%, #FFD700 100%); 
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.banner-ngot h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Dancing Script', cursive; 
+}
+
+.banner-ngot p {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* KHU VỰC GRID SẢN PHẨM */
+.product-grid-container {
+    padding: 60px 40px;
+    background-color: #fcfcfc;
+}
+
+.product-grid {
+    display: grid;
+    /* Bố cục: 4 Cột trên Desktop */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* THẺ SẢN PHẨM (VN Identity & Hover) */
+.product-card {
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 35px 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid #D42D2D; 
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    min-height: 500px;
+}
+
+/* HIỆU ỨNG SÁNG TẠO: SCALE UP & GLOW KHI HOVER */
+.product-card:hover {
+    transform: translateY(-5px) scale(1.02); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 69, 0, 0.5); /* Hiệu ứng glow cam */
+    border-bottom: 4px solid #FF4500; /* Chuyển sang màu Cam Canada khi hover */
+}
+
+/* Hiệu ứng khi thêm hàng thành công */
+.product-card.added-success {
+    box-shadow: 0 0 20px 5px #4CAF50; /* Màu xanh lá cây nổi bật */
+    transition: box-shadow 0.2s ease-out;
+}
+
+.product-image-wrapper {
+    position: relative;
+    overflow: hidden;
+     flex-grow: 1; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+     flex-shrink: 0;
+     margin-bottom: 20px;
+}
+
+.product-image-wrapper img {
+    width: 95%; 
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image-wrapper img {
+    transform: scale(1.05); /* Phóng to nhẹ ảnh khi hover */
+}
+
+/* HIỆU ỨNG XEM NHANH (QUICK VIEW OVERLAY) */
+.quick-view-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(212, 45, 45, 0.9); /* Màu Đỏ VN mờ */
+    color: white;
+    padding: 10px 0;
+    font-weight: bold;
+    cursor: pointer;
+    transform: translateY(100%); /* Ẩn mặc định */
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .quick-view-overlay {
+    transform: translateY(0); /* Hiện khi hover */
+}
+
+/* --- KHUNG TƯƠNG TÁC SỐ LƯỢNG VÀ NÚT --- */
+.product-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    min-height: 60px; 
+    margin-bottom: 10px;
+    margin-top: 5;
+}
+
+.product-price {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #D42D2D; /* Màu Đỏ Việt Nam */
+    margin: 10px 0;
+}
+
+.card-interaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.quantity-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.qty-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #f7f7f7;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.2s;
+    font-size: 1.2rem;
+}
+
+.qty-btn:hover {
+    background-color: #FFD700; /* Màu vàng Gold khi hover */
+}
+
+.qty-field {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    font-size: 1.1rem;
+    outline: none;
+}
+.qty-field::-webkit-inner-spin-button, 
+.qty-field::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+/* Nút thêm vào giỏ hàng */
+.btn-add-to-cart {
+    flex-grow: 1;
+    padding: 15px 5px;
+    background-color: #FF4500; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s;
+}
+
+.btn-add-to-cart:hover {
+    background-color: #D42D2D; /* Chuyển sang Đỏ VN khi hover */
+    color: white;
+}
+
+.btn-add-to-cart:active {
+    transform: scale(0.98);
+}
+
+/* NOTIFICATION MESSAGE */
+#add-to-cart-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50; 
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+    z-index: 2000;
+    font-weight: bold;
+}
+.card-details {
+    flex-shrink: 0; 
+    padding-top: 15px; 
+    margin-top: auto;
+}
+
+#add-to-cart-notification.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* RESPONSIVE LAYOUT */
+@media (max-width: 1100px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+     .product-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px;
+    }
+    .banner-ngot h1 {
+        font-size: 2.5rem;
+    }
+     .product-card {
+        padding: 20px; 
+    }
+}
+
+@media (max-width: 500px) {
+     .product-grid {
+        grid-template-columns: 1fr; 
+    }
+}
+
+
+
+
+
+.product-card .badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #D42D2D; /* Màu đỏ nổi bật */
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Tạo hiệu ứng góc cắt (tùy chọn) */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+}
+
+.product-card .badge.new {
+    background-color: #007BFF; /* Màu xanh cho sản phẩm mới */
+}
+
+
+
+/*Caphe*/
+
+.banner-caphe {
+     padding: 80px 20px;
+    margin-top: -30px; 
+    text-align: center;
+    background: linear-gradient(135deg, #D42D2D 0%, #FF4500 60%, #FFD700 100%); 
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.banner-caphe h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Dancing Script', cursive; 
+}
+.product-card {
+    /* Đảm bảo product-card có position: relative để badge được định vị chính xác */
+    position: relative; 
+}
+.product-card .badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #D42D2D; /* Màu đỏ nổi bật (Đỏ VN) */
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Hiệu ứng góc cắt đã có sẵn trong file vn.css */
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+    z-index: 10;
+    text-transform: uppercase;
+}
+
+/* Biến thể màu sắc cho các loại nhãn khác nhau */
+.product-card .badge.new {
+    background-color: #007BFF; /* Xanh dương cho Sản Phẩm Mới */
+    clip-path: none; /* Bỏ góc cắt, dùng hình chữ nhật bo tròn đơn giản */
+    border-radius: 5px;
+}
+
+.product-card .badge.best-seller {
+    background-color: #FFD700; /* Vàng Gold cho Bán Chạy */
+    color: #333;
+    clip-path: none;
+    border-radius: 5px;
+}
+
+.product-card .badge.discount {
+    background-color: #4CAF50; /* Xanh lá cho Giảm Giá/Ưu Đãi */
+}
+
+/* Thêm badge bên trái */
+.product-card .badge.left {
+    right: auto;
+    left: 15px;
+}
+
+
+.product-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); 
+    border-bottom: 5px solid #FF4500; /* Viền chuyển sang Cam khi hover */
+}
+.product-price {
+    color: #8B4513; /* Giá tiền màu Nâu Đỏ */
+}
+.btn-add-to-cart {
+    background-color: #A0522D; /* Màu Nâu Sáng */
+}
+
+.btn-add-to-cart:hover {
+    background-color: #D42D2D; /* Chuyển sang Cam khi hover */
+}
+
+
+
+
+/*Tra sua*/
+.banner-trasua {
+     padding: 80px 20px;
+    margin-top: -30px; 
+    text-align: center;
+    background: linear-gradient(135deg, #D42D2D 0%, #FF4500 60%, #FFD700 100%); 
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.banner-trasua h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Dancing Script', cursive; 
+}
+
+
+
+
+
+.related-products-section {
+    padding: 40px 20px;
+    background-color: #f5f5f5; /* Màu nền nhẹ để phân biệt */
+    border-top: 5px solid #FF4500;
+}
+
+.related-products-section h2 {
+    color: #D42D2D;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+/* Đảm bảo responsive cho lưới đề xuất */
+@media (max-width: 1100px) {
+    .related-products-list {
+        grid-template-columns: repeat(2, 1fr) !important; 
+    }
+}
+@media (max-width: 768px) {
+     .related-products-list {
+        grid-template-columns: 1fr !important; /* 1 cột trên mobile */
+    }
+}
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.language-switcher a {
+    color: white; /* Màu chữ trắng */
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+/* Kiểu dáng cho ngôn ngữ đang được chọn */
+.language-switcher a.active {
+    border-color: #FFD700; /* Viền vàng nổi bật */
+    background-color: rgba(255, 255, 255, 0.1); /* Nền hơi mờ */
+}
+
+.language-switcher a:hover:not(.active) {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Điều chỉnh vị trí trên Mobile */
+@media (max-width: 767px) {
+    .language-switcher {
+        display: none; /* Tùy chọn: Ẩn trên mobile để tối ưu không gian header */
+    }
+}
+
+
+
+
+
+
+/* Hiệu ứng cuộn*/
+ .banner-parallax {
+    /* Sử dụng ảnh banner đẹp mà bạn đã upload */
+    background-image: url('phở.jpg'); 
+    height: 103vh; /* Chiều cao cố định */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* CÁC THUỘC TÍNH PARALLAX CẦN THIẾT */
+    background-attachment: fixed;
+       background-position: center 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Đảm bảo nội dung không bị che bởi Header */
+    margin-top: -100px; 
+}
+
+.banner-overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Lớp phủ mờ để chữ nổi bật */
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.banner-title {
+    font-family: 'Dancing Script', cursive; 
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px #000;
+}
+
+.banner-subtitle {
+    font-size: 1.5rem;
+    color: #FFD700; /* Màu vàng Gold nổi bật */
+    margin-bottom: 20px;
+}
+
+.btn-primary-scrolldown {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #D42D2D;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* 2. KHU VỰC VIDEO VÀ CÔNG THỨC */
+.content-section {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white; /* Đảm bảo nội dung cuộn trên nền trắng */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng nổi lên trên ảnh nền */
+}
+
+.content-section h2 {
+    color: #1a8a29; /* Màu xanh lá cây (Tươi mát, ẩm thực) */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+
+.video-container {
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.video-desc {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+}
+
+/* 3. BỐ CỤC GRID CÔNG THỨC (Giống phong cách Bếp Xanh) */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.recipe-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid #ddd;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.recipe-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.recipe-name {
+    color: #D42D2D;
+    font-size: 1.4rem;
+    margin-top: 0;
+}
+
+.btn-recipe {
+    display: block;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #FF4500;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+    .recipe-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 767px) {
+    .recipe-grid {
+        grid-template-columns: 1fr;
+    }
+    .banner-title {
+        font-size: 2.5rem;
+    }
+   .content-section {
+        padding: 40px 15px;
+    }
+}    
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px; /* Chiều dày của thanh */
+    width: 0%;
+    background-color: #F7F700;
+    z-index: 9999;
+    transition: width 0.1s;
+}
+
+
+
+
+ /*Phần nấu mì /*/ 
+.main-content-parallax-area {
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 10; 
+}
+
+/* Khu vực nội dung cuộn chính giữa (center-content-area) */
+.center-content-area {
+    max-width: 1000px; 
+    width: 100%;
+    background-color: #f8f8f8; /* Nền của nội dung chính */
+    padding: 40px 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+    z-index: 20; /* Nằm trên Side Decor */
+}
+
+/* ================================================== */
+/* CSS CHO CONTAINER VÀ CÁC THANH TRANG TRÍ FIXED */
+/* ================================================== */
+
+/* 1. CONTAINER BAO BỌC (Dùng để áp dụng JavaScript Transform) */
+#side-decor-container {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    z-index: 5; 
+    pointer-events: none; /* Rất quan trọng để có thể click xuyên qua */
+}
+
+/* 2. CÁC THANH TRANG TRÍ (DECOR ELEMENTS) */
+.side-decor {
+    /* Loại bỏ position: fixed vì #side-decor-container đã làm nhiệm vụ này */
+    position: absolute; 
+    top: 0;
+    height: 100%;
+    /* Tính toán chiều rộng: (Nửa màn hình) - (Nửa chiều rộng nội dung chính: 1000px/2 = 500px) */
+    width: calc(50vw - 500px); 
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+}
+
+/* 3. ĐỊNH VỊ CHO THANH BÊN TRÁI */
+.left-side {
+    left: 0; /* Dính vào mép trái màn hình */
+    background-image: url('nền.jpg'); 
+    background-position: left top;
+}
+
+/* 4. ĐỊNH VỊ CHO THANH BÊN PHẢI */
+.right-side {
+    right: 0; /* Dính vào mép phải màn hình */
+    background-image: url('nền.jpg'); 
+    background-position: right top;
+}
+
+/* MEDIA QUERY: ẨN SIDE DECOR KHI MÀN HÌNH QUÁ HẸP */
+@media (max-width: 1050px) {
+    .side-decor {
+        display: none; 
+    }
+    .center-content-area {
+        max-width: 100%; 
+    }
+}
+
+.center-content-area {
+    /* ... (code cũ) ... */
+    background-color: #ffffff; /* Giữ nền trắng sạch sẽ */
+    border-left: 2px solid #FFC300; /* Viền vàng mạnh mẽ bên trái */
+    border-right: 2px solid #D42D2D; /* Viền đỏ mạnh mẽ bên phải */
+    padding: 60px 40px; /* Tăng padding để nội dung cách xa các viền Side Decor */
+}
+
+/* Thêm hiệu ứng cho tiêu đề chính */
+.center-content-area h2 {
+    font-family: 'Dancing Script', cursive; 
+    color: #D42D2D; /* Tiêu đề đỏ nổi bật */
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #FFC300; /* Đường kẻ vàng dưới tiêu đề */
+    padding-bottom: 10px;
+}
+
+
+
+/*Hiệu ứng challenge nấu mì/*/
+.challenge-section {
+    padding: 60px 40px;
+    text-align: center;
+    background-color: #fffaf0; /* Nền vàng kem nhẹ nhàng */
+    border-top: 5px solid #D42D2D;
+    margin-top: 40px;
+}
+
+.challenge-title {
+    color: #D42D2D;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.challenge-desc {
+    color: #444;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.challenge-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.challenge-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 30%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 5px solid transparent; /* Viền màu theo cấp độ */
+}
+
+.challenge-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.level-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.time-limit {
+    font-size: 1.1rem;
+    color: #FF4500;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.challenge-tip {
+    color: #666;
+    min-height: 50px;
+}
+
+/* MÀU SẮC THEO CẤP ĐỘ */
+.easy-level {
+    border-bottom-color: #4CAF50; /* Xanh lá: Dễ */
+}
+.medium-level {
+    border-bottom-color: #FFD700; /* Vàng: Trung bình */
+}
+.master-level {
+    border-bottom-color: #D42D2D; /* Đỏ: Khó */
+}
+
+/* NÚT VOTE (Tương tác) */
+.btn-vote {
+    background-color: #FFC300;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.btn-vote:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 992px) {
+    .challenge-grid {
+        flex-direction: column; 
+        align-items: center;
+    }
+    .challenge-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+.video-container {
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* THÊM TRANSITION CHO HIỆU ỨNG JS */
+    transition: box-shadow 0.5s ease, transform 0.5s ease; 
+}
+.recipe-card {
+    /* ... (Giữ code cũ) ... */
+    border: 1px solid #FFC300; /* Viền vàng sáng */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 25px rgba(212, 45, 45, 0.4); /* Shadow màu đỏ đậm */
+}
+
+.recipe-name {
+    /* ... (Giữ code cũ) ... */
+    color: #D42D2D; /* Màu đỏ nổi bật */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+/*Thưucj đơn/*/
+
+.center-content-area h2 {
+    font-family: 'Dancing Script', cursive; 
+    color: #003366; /* Màu Xanh Navy (trang trọng) */
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #FFD700; /* Đường kẻ Vàng Kim */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Khoảng cách giữa chữ và icon/emoji */
+}
+.banner-parallax {
+    /* Sử dụng ảnh banner đẹp mà bạn đã upload */
+    background-image: url('trangt.jpg'); 
+    height: 103vh; /* Chiều cao cố định */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* CÁC THUỘC TÍNH PARALLAX CẦN THIẾT */
+    background-attachment: fixed;
+       background-position: center 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Đảm bảo nội dung không bị che bởi Header */
+    margin-top: -100px; 
+}
+
+
+
+
+
+
+
+
+#banner-parallax, #top-parallax-banner-td {
+    /* Đặt Banner Parallax 1 (dùng chung ID) cho phong cách trang trọng */
+    background-image: url('trangt.jpg'); /* Ảnh cao cấp hơn */
+    background-color: #581845; /* Màu Burgundy (Đỏ rượu) */
+    /* ... (Giữ nguyên các thuộc tính fixed và height khác) ... */
+}
+
+
+.thucdon-style .banner-overlay {
+    background-color:  rgba(0, 0, 0, 0.5)
+}
+
+.thucdon-style .banner-title {
+    font-family: 'Times New Roman', serif; /* Font chữ cổ điển hơn */
+    font-size: 4rem;
+    color: #FFC300; /* Vàng Kim (Gold) */
+}
+
+/* 2. SIDE DECOR TRANG TRỌNG */
+.left-side.thucdon-decor, .right-side.thucdon-decor {
+    background-color: #fff8e1; /* Nền kem nhẹ */
+    background-image: url('gạch.jpg'); /* Họa tiết vàng kim/gia vị */
+    background-size: 150px auto; 
+    opacity: 0.95;
+    border-left: 1px solid #FFC300;
+    border-right: 1px solid #FFC300;
+}
+
+/* 3. NỘI DUNG CHÍNH (CENTER AREA) */
+.center-content-area.thucdon-area-center {
+    background-color: #ffffff; /* Nền trắng sạch sẽ */
+    border-left: 4px solid #FAF0E6; /* Viền Burgundy mạnh mẽ */
+    border-right: 4px solid #FAF0E6;
+}
+
+/* Định dạng tiêu đề món ăn */
+.dish-heading {
+    color: #FAF0E6; /* Đỏ Rượu */
+    font-size: 2.2rem;
+    border-bottom: 3px solid #FFC300; /* Đường kẻ Vàng Kim */
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+
+.btn-recipe {
+    background-color: #584418; /* Nút hành động màu Đỏ Rượu */
+}
+.btn-recipe:hover {
+    background-color: #FFC300; 
+    color: #583b18;
+}
+
+
+.video-container {
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* THÊM TRANSITION CHO HIỆU ỨNG JS */
+    transition: box-shadow 0.5s ease, transform 0.5s ease; 
+}
+.recipe-card {
+    /* ... (Giữ code cũ) ... */
+    border: 1px solid #FFC300; /* Viền vàng sáng */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 25px rgba(212, 45, 45, 0.4); /* Shadow màu đỏ đậm */
+}
+
+.recipe-name {
+    /* ... (Giữ code cũ) ... */
+    color: #D42D2D; /* Màu đỏ nổi bật */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.btn-sidebar-cta {
+    background-color: #D42D2D !important; /* Đỏ VN nổi bật */
+    color: white !important;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Đảm bảo nút được reset style */
+    display: block;
+    text-decoration: none;
+}
+
+.btn-sidebar-cta:hover {
+    background-color: #FF4500 !important; /* Chuyển sang Cam khi hover */
+}
+
+/* Ký tự/Icon (Đã có trong HTML) */
+.center-content-area h2 .fas, 
+.center-content-area h2 span {
+    color: #FFD700; /* Màu Vàng Kim nổi bật */
+}
+
+/* Phần nội dung mô tả nhỏ */
+.center-content-area p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Style cho khối Nội dung Sản phẩm */
+.products-section, .featured-recipes-section {
+    padding: 30px 0;
+    border-bottom: 1px dashed #ddd; /* Đường kẻ mờ phân chia section */
+}
+
+.products-section {
+    margin-top: 20px; /* Thêm khoảng cách với phần trên */
+}
+
+
+.introduction-section.thucdon-intro {
+    background-color: #FAF0E6; /* Nền Vàng Kem (Sạch sẽ, ấm áp) */
+    border-top: 5px solid #FFD700;
+}
+.introduction-section.thucdon-intro h2 {
+    color: #2C3E50; /* Xanh Navy cho tiêu đề giới thiệu */
+    font-family: 'Times New Roman', serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* 2. BỐ CỤC TÓM TẮT MENU (GRID 3 CỘT MỚI) */
+.menu-summary-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 30px;
+    border: 1px solid #FFD700;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.menu-summary-item {
+    text-align: center;
+    width: 30%;
+}
+.menu-summary-item i {
+    font-size: 2.5rem;
+    color: #FF4500; /* Icon màu Cam Canada */
+    margin-bottom: 10px;
+}
+.menu-summary-item h3 {
+    color: #2C3E50; /* Xanh Navy */
+    font-size: 1.2rem;
+    border-bottom: 2px dashed #eee;
+    padding-bottom: 5px;
+}
+.menu-summary-item p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+
+/* 3. ĐỊNH DẠNG NỘI DUNG CUỘN CHÍNH */
+.center-content-area.thucdon-area-center {
+    /* Đảm bảo tiêu đề trong nội dung chính sử dụng Xanh Navy */
+    background-color: #ffffff; 
+    border-left: 4px solid #FF4500; /* Viền Cam nổi bật */
+    border-right: 4px solid #FF4500;
+}
+
+.dish-heading {
+    color: #2C3E50; /* Xanh Navy cho tiêu đề món ăn */
+    font-family: 'Times New Roman', serif;
+    font-size: 2rem;
+    border-bottom: 3px solid #FFD700; /* Đường kẻ Vàng Kim */
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+
+
+.center-content-area .main-section-title.thucdon-title {
+    /* Màu chữ chính và font trang trọng */
+    font-family: 'Times New Roman', serif;
+    color: #2C3E50; /* Xanh Navy cho tiêu đề */
+    font-size: 2.5rem;
+    
+    /* Căn giữa và bố cục icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+    text-align: center;
+    
+    /* Tạo hiệu ứng NỔI BẬT */
+    background-color: #f7f7f7; /* Nền xám nhẹ cho khối tiêu đề */
+    border: 1px solid #FFC300; /* Viền Vàng Kim */
+    border-radius: 8px;
+    padding: 15px 25px; /* Tăng padding để tiêu đề thoáng hơn */
+    margin: 40px auto 30px; /* Thêm khoảng cách */
+    
+    /* HIỆU ỨNG 3D NHẸ (Box Shadow) */
+    box-shadow: 4px 4px 0px 0px #581845; /* Đỏ Rượu/Burgundy đổ bóng nhẹ */
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi hover (Làm tiêu đề rung nhẹ, cuốn hút) */
+.center-content-area .main-section-title.thucdon-title:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px #FF4500; /* Đổi sang bóng Cam sáng hơn */
+    cursor: pointer;
+}
+
+.center-content-area .thucdon-title .icon-primary {
+    color: #581845; /* Đỏ Rượu/Burgundy cho icon */
+    font-size: 1.2em;
+    flex-shrink: 0;
+}
+
+.kv-section {
+    padding: 30px 0;
+    background-color: white;
+}
+.kv {
+    max-width: 900px;
+    margin: 1 auto;
+    padding: 30px;
+    border: 3px dashed #333; 
+    text-align: center;
+}
+
+.kv h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #007BFF;
+}
+.dish-body.js-heading {
+    /* Mặc định: Hơi lùi về sau và ẩn */
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    
+    /* Style cơ bản */
+    font-family: 'Times New Roman', serif; 
+    font-size: 2.8rem;
+    color: #4CAF50; /* Xanh Navy */
+    background: #fffaf0; /* Nền Vàng Kem */
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin: 40px auto 30px;
+}
+
+.dish-body.js-heading.pop-out {
+    /* Khi JS kích hoạt: Nổi bật và có bóng 3D */
+    transform: scale(1);
+    opacity: 1;
+    text-shadow: 2px 2px 0px  4px 4px 0px  #FF4500 #D42D2D; /* Bóng 3D Lửa */
+}
+
+
+
+
+
+
+/*/Thịt ướp /*/
+
+.uopthit-style .banner-title {
+    font-size: 4rem;
+    color: #FFD700; /* Vàng Kim nổi bật */
+}
+.dish-body.js-heading {
+    /* Mặc định: Hơi lùi về sau và ẩn */
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    
+    /* Style cơ bản */
+    font-family: 'Times New Roman', serif; 
+    font-size: 2.8rem;
+    color: #cc2b2bd1; /* Xanh Navy */
+    background: #fffaf0; /* Nền Vàng Kem */
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin: 40px auto 30px;
+}
+
+/* 2. SIDE DECOR (Họa tiết Lửa/Sả - Parallax 2) */
+.left-side.uopthit-decor, .right-side.uopthit-decor {
+    background-color: #fffaf0; /* Nền Vàng Kem */
+    background-image: url('pattern-sate-spice.png'); /* Họa tiết gia vị nướng */
+    background-size: 180px auto; 
+    opacity: 0.9;
+    border: 1px solid #FF4500;
+}
+
+/* 3. HIỆU ỨNG VẨY GIA VỊ (Nền cố định) */
+#spice-shake-container {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 50; /* Nằm trên Side Decor nhưng dưới Header */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.spice-particle {
+    position: absolute; /* Phải là absolute để đặt vị trí */
+    border-radius: 50%;
+    opacity: 0.6;
+    /* KHÔNG CẦN ANIMATION TẠI ĐÂY, vì JS sẽ thêm nó */
+}
+
+/* 4. HIỆU ỨNG CHỮ NỔI (3D POP-OUT) */
+
+
+
+/* 5. SIDEBAR STICKY và Nội dung chính */
+.sticky-sidebar.uopthit-sidebar {
+    background-color: #FEF3C7; 
+    border: 3px dashed #FF4500;
+}
+.center-content-area.uopthit-area-center {
+    background-color: #ffffff;
+    border-left: 4px solid #D42D2D; 
+    border-right: 4px solid #D42D2D;
+}
+
+/* Các Style phụ khác */
+.ingredient-list li {
+    font-size: 1.1rem;
+    list-style-type: none;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+.ingredient-list li strong {
+    color: #D42D2D; 
+}
+.cta-uop-thit {
+    background-color: #FFD700;
+    margin-top: 50px;
+}
+
+
+.related-products-section {
+    padding: 60px 40px;
+    text-align: center;
+    background-color: #f7f7f7; /* Nền xám nhẹ để tách biệt */
+    border-top: 5px solid #FF4500; /* Viền cam nổi bật */
+}
+
+.related-products-section .section-header {
+    margin-bottom: 40px;
+}
+
+.related-products-section h2 {
+    color: #D42D2D; /* Màu Đỏ VN */
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+/* Đảm bảo lưới sản phẩm (product-grid) trong section này hiển thị 3 cột */
+#related-meat-products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Kế thừa các style product-card từ các quy tắc CSS khác của bạn */
+
+@media (max-width: 992px) {
+    #related-meat-products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 550px) {
+    #related-meat-products {
+        grid-template-columns: 1fr;
+    }
+}
+
+body {
+    font-family: 'Bahnschrift Condensed', Arial, sans-serif;
+    margin: 0;
+    padding-top: 90px; /* Bù chiều cao Header */
+    background-color: #f8f8f8;
+    color: #2C3E50; /* Xanh Navy cho chữ chính */
+}
+
+/* --- HEADER VÀ NAVIGATION --- */
+.header {
+    /* ... (Giữ code Header cố định của bạn) ... */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+/* ... (Giữ nguyên các style menu, logo, dropdown, etc.) ... */
+
+
+/* --- 1. THANH TIẾN TRÌNH CUỘN --- */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px; 
+    width: 0%;
+    background-color: #FF4500; /* Màu cam nổi bật */
+    z-index: 9999;
+    transition: width 0.1s;
+}
+
+/* --- 2. HIỆU ỨNG VẨY GIA VỊ (Nền cố định) --- */
+
+
+/* 3. BANNER PARALLAX (Top Banner) */
+.banner-parallax.uopthit-style {
+    background-image: url('múp.jpg'); 
+    background-color: #A0522D;
+    height: 100vh;
+    padding-top: 90px;
+    margin-top: -90px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Dùng JS để kiểm soát background-position */
+    position: relative;
+    z-index: 1;
+}
+.banner-parallax.uopthit-style:hover .banner-overlay.uopthit-style {
+    opacity: 1; 
+    pointer-events: auto; /* Cho phép tương tác khi hiện ra */
+}
+
+.uopthit-style .banner-overlay {
+    background-color: rgba(220, 20, 60, 0.45); /* Tăng độ đậm để che phủ rõ hơn */
+    
+    /* === THIẾT LẬP KÍCH THƯỚC VÀ ĐỊNH VỊ CẮT NGANG === */
+    position: absolute; /* Quan trọng: Định vị tuyệt đối so với .banner-parallax */
+    top: 50%; /* Bắt đầu từ 50% chiều cao */
+    left: 0;
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    transform: translateY(-50%); /* Dịch chuyển lên 50% chiều cao của chính nó để căn giữa hoàn hảo */
+    
+    /* === LOẠI BỎ CÁC THUỘC TÍNH GÂY LỖI KHI ĐỊNH VỊ TUYỆT ĐỐI === */
+    padding: 0; 
+    border-radius: 0; 
+    
+    /* === HIỆU ỨNG HOVER === */
+    opacity: 0; /* Ẩn mặc định */
+    transition: opacity 0.5s ease-in-out; 
+    pointer-events: none; /* Ngăn tương tác khi ẩn */
+}
+
+.uopthit-style .banner-title {
+    font-size: 4rem;
+    color: #FFD700; /* Vàng Kim */
+    text-shadow: 4px 4px #D42D2D; /* Bóng chữ nổi */
+}
+.uopthit-style .banner-subtitle {
+    font-weight: bold;
+    color: white;
+}
+.btn-primary-scrolldown {
+    background-color: #FF4500;
+}
+
+/* 4. SIDE DECOR (Parallax Lớp 2) */
+.main-content-parallax-area {
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 10; 
+}
+
+#side-decor-container {
+    position: absolute; /* Absolute so với Section cha */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5; 
+    pointer-events: none;
+}
+.side-decor {
+    position: absolute; 
+    top: 0;
+    height: 100%;
+    width: calc(50vw - 500px); /* 1000px là chiều rộng nội dung chính */
+    background-repeat: repeat-y;
+    background-attachment: fixed; /* ẢNH NỀN CỐ ĐỊNH TẠO HIỆU ỨNG PARALLAX */
+}
+
+.left-side.uopthit-decor {
+    left: 0;
+    background-image: url('gạch.jpg'); 
+    background-size: 180px auto; 
+}
+.right-side.uopthit-decor {
+    right: 0;
+    background-image: url('gạch.jpg'); 
+    background-size: 180px auto; 
+}
+
+/* 5. NỘI DUNG CHÍNH (CENTER AREA) */
+.center-content-area.uopthit-area-center {
+    max-width: 1000px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    z-index: 20; 
+    border-radius: 15px;
+}
+
+/* 6. STYLE CHỮ NỔI (3D Pop-out Text) */
+.dish-heading.js-heading {
+    /* Trạng thái ban đầu */
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    
+    /* Style cơ bản */
+    font-family: 'Times New Roman', serif; 
+    font-size: 2.8rem;
+    color: #2C3E50; 
+    background: #FFD700; /* Nền Vàng Kim */
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin: 40px auto 30px;
+    text-align: center;
+}
+
+.dish-heading.js-heading.pop-out {
+    transform: scale(1);
+    opacity: 1;
+    text-shadow: 2px 2px 0px #FF4500, 4px 4px 0px #D42D2D; /* Bóng Lửa */
+}
+
+/* Chi tiết công thức */
+.ingredient-list li strong {
+    color: #D42D2D; 
+    font-weight: 900;
+}
+.step-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* --- LOGIC TRÁNG MIỆNG MUA KÈM --- */
+.related-products-section {
+    padding: 40px 0;
+    border-top: 2px dashed #FF4500;
+}
+.related-products-section .section-header h2 {
+    color: #D42D2D;
+    font-size: 2rem;
+}
+
+
+
+
+.layer-reveal-container {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Chiều cao cố định cho ảnh */
+    margin: 20px 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.marinade-step-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Ẩn mặc định */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Định nghĩa các ảnh nền (Sử dụng placeholder ảnh của bạn) */
+#step-base {
+    background-image: url('mlem.jpg');
+    opacity: 3; /* Hiển thị ảnh nền cơ bản ban đầu */
+}
+#step-sauce {
+    background-image: url('phở.jpg');
+}
+#step-final {
+    background-image: url('thịt.jpg');
+}
+
+
+
+.marinade-timer-widget {
+    /* Thiết kế hộp chứa chính */
+    background: linear-gradient(135deg, #fff8e1, #ffe0b2); /* Màu kem vàng ấm áp */
+    padding: 25px;
+    border-radius: 15px; /* Góc bo tròn mềm mại */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), /* Bóng đổ 3D nhẹ */
+                0 0 0 3px #ffcc80; /* Viền ngoài màu cam ấm */
+    text-align: center;
+    margin-top: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.marinade-timer-widget:hover {
+    transform: translateY(-3px); /* Hiệu ứng nhấc nhẹ khi rê chuột */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15),
+                0 0 0 4px #ffa726; /* Viền sáng hơn khi hover */
+}
+
+.marinade-timer-widget h3 {
+    /* Tiêu đề Bộ Đếm */
+    color: #d84315; /* Màu đỏ đất đậm */
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffcc80;
+    padding-bottom: 10px;
+}
+
+.marinade-timer-widget p {
+    /* Mô tả */
+    color: #5d4037; /* Màu nâu cà phê */
+    margin-bottom: 20px;
+}
+
+/* --- Thiết Kế Select (Dropdown) --- */
+
+#timer-duration {
+    appearance: none; /* Ẩn giao diện mặc định của trình duyệt */
+    background-color: #ffffff;
+    border: 2px solid #ffcc80;
+    border-radius: 8px;
+    padding: 10px 40px 10px 15px; /* Tăng padding bên phải cho mũi tên tùy chỉnh */
+    font-size: 1em;
+    color: #3e2723;
+    width: 80%; /* Chiều rộng */
+    max-width: 300px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    /* Thêm icon mũi tên tùy chỉnh */
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fmilitary-history.fandom.com%2Fwiki%2FBlack_triangle_%2528badge%2529&psig=AOvVaw3AkkClwoZyCOEWHGLZ6GVZ&ust=1762916190290000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCJiLyYmN6ZADFQAAAAAdAAAAABAK');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px;
+}
+
+#timer-duration:focus {
+    border-color: #ffa726;
+    box-shadow: 0 0 8px rgba(255, 167, 38, 0.6);
+    outline: none;
+}
+
+/* --- Thiết Kế Nút Bấm (Button) --- */
+
+#start-timer-btn {
+    /* Kế thừa từ .btn-primary nếu có, nhưng làm cho nó nổi bật hơn */
+    background: linear-gradient(45deg, #ff7043, #d84315); /* Gradient lửa */
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px; /* Hình dạng viên thuốc */
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(216, 67, 21, 0.4);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#start-timer-btn:hover {
+    background: linear-gradient(45deg, #ff8a65, #e64a19);
+    box-shadow: 0 6px 20px rgba(216, 67, 21, 0.6);
+    transform: translateY(-2px); /* Nhấc lên khi hover */
+}
+
+#start-timer-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(216, 67, 21, 0.4);
+}
+
+/* --- Thiết Kế Hiển Thị Thời Gian (Display) --- */
+
+#timer-display {
+    /* Hiển thị thời gian đếm ngược */
+    margin-top: 25px;
+    font-size: 1.8em;
+    font-weight: 900;
+    color: #ff9800; /* Màu cam rực rỡ */
+    background: #fff3e0; /* Nền nhẹ */
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px dashed #ffb74d; /* Viền nét đứt vui mắt */
+    min-height: 50px; /* Đảm bảo chiều cao tối thiểu */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Hiệu ứng nhịp đập khi đếm ngược (cần JS để thêm class) */
+    /* .pulsing-effect { animation: pulse 1s infinite alternate; } */
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+
+
+.creative-clock {
+    background-color: #FEF3C7; /* Nền Vàng Kem Sáng */
+    border: 3px solid #FFD700; /* Viền Vàng Kim */
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 25px; 
+    margin-bottom: 0;
+    max-width: none;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative; 
+    overflow: hidden;
+}
+
+.creative-clock h3 {
+    color: #2C3E50; /* Xanh Navy */
+    font-size: 1.8rem;
+    border-bottom: 3px solid #FF4500; /* Đường kẻ Cam */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* KHU VỰC HIỂN THỊ ĐỒNG HỒ */
+.clock-display-area {
+    background-color: #2C3E50; /* Nền Xanh Navy đậm */
+    border-radius: 10px;
+    padding: 25px 0;
+    margin-bottom: 25px;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5); 
+}
+
+.timer-display {
+    font-family: 'Bahnschrift Condensed', Arial, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #FFD700; /* Hiển thị màu Vàng Kim */
+    letter-spacing: 2px;
+    transition: color 0.5s ease;
+    z-index: 10;
+    position: relative;
+    letter-spacing: 0.5px;
+}
+
+.timer-display .unit {
+    font-size: 1.5rem;
+    opacity: 0.7;
+    margin-left: 0.5px; /* Tăng khoảng cách an toàn với số */
+    padding-left: 0.5px;
+}
+
+/* --- ICON TRANG TRÍ VIỆT NAM & CANADA --- */
+.decor-icon-vn, .decor-icon-ca {
+    position: absolute;
+    font-size: 3rem;
+    z-index: 5;
+    opacity: 0.2;
+    transition: transform 0.5s;
+}
+.decor-icon-vn {
+    top: -10px;
+    left: 10px;
+    color: #D42D2D;
+}
+.decor-icon-ca {
+    bottom: -10px;
+    right: 10px;
+    color: #FF4500;
+}
+
+/* --- ĐIỀU KHIỂN VÀ NÚT --- */
+.controls-area {
+    display: flex;
+    gap: 10px;
+}
+
+/* 1. STYLE CHUNG CHO NÚT VÀ SELECT */
+.timer-select, .btn-primary-start, .btn-primary-reset {
+    flex-grow: 1; /* Cho phép giãn nở đều */
+    padding: 12px 10px; 
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+/* 2. STYLE RIÊNG CHO SELECT */
+.timer-select {
+    border: 2px solid #FFD700;
+    background-color: white;
+    color: #2C3E50;
+    text-align: center;
+}
+
+/* 3. STYLE CHO NÚT START/RESET */
+.btn-primary-start {
+    background-color: #1a8a29; /* Xanh lá (Start/Go) */
+    color: white;
+    border: none;
+}
+.btn-primary-start:hover {
+    background-color: #156d21;
+}
+
+.btn-primary-reset {
+    background-color: #D42D2D; /* Đỏ (Stop/Reset) */
+    color: white;
+    border: none;
+}
+.btn-primary-reset:hover {
+    background-color: #ff0000;
+}
+
+/* Khi timer kết thúc */
+.creative-clock.complete .timer-display {
+    color: #1a8a29; 
+    transform: scale(1.1);
+}
+
+.sticky-sidebar .quick-links {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.sticky-sidebar h3 {
+    color: #D42D2D; /* Đỏ VN */
+    font-size: 1.8rem;
+    font-weight: bold;
+    
+    /* === CĂN GIỮA VÀ TĂNG KÍCH THƯỚC === */
+    text-align: center; 
+    font-size: 2.2rem; /* Tăng kích thước font */
+    /* ================================== */
+    
+    border-bottom: 2px solid #FFD700; /* Đường kẻ Vàng Kim */
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 25px; /* Giữ khoảng cách với nội dung */
+}
+.sticky-sidebar {
+    /* ... (giữ nguyên các thuộc tính fixed, width, etc.) ... */
+    padding: 30px 20px 20px; /* Đảm bảo padding đủ rộng để tiêu đề căn giữa */
+    /* ... */
+}
+.sticky-sidebar .quick-links li {
+    margin-bottom: 8px; /* Khoảng cách giữa các mục */
+    transition: all 0.2s ease;
+}
+
+.sticky-sidebar .quick-links li a {
+    display: flex; /* Dùng flexbox để căn giữa icon và chữ */
+    align-items: center;
+    padding: 10px 15px;
+    background-color: white; /* Nền trắng sạch sẽ */
+    border: 1px solid #FFD700; /* Viền Vàng Kim */
+    border-radius: 20px; /* Hình dáng pill */
+    text-decoration: none;
+    color: #2C3E50; /* Chữ Xanh Navy */
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+}
+
+/* Hiệu ứng tương tác: Nhấc lên và thay đổi màu khi hover */
+.sticky-sidebar .quick-links li a:hover {
+    background-color: #D42D2D; /* Nền Đỏ VN khi hover */
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style cho Icon (Emoji) */
+.sticky-sidebar .quick-links li a span {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+/* Hiệu ứng cho icon khi hover */
+.sticky-sidebar .quick-links li a:hover span {
+    color: #FFD700; /* Icon chuyển sang Vàng Kim khi hover trên nền Đỏ */
+}
+
+.quick-checklist {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.quick-checklist li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.quick-checklist li:hover {
+    background-color: rgba(255, 215, 0, 0.1); /* Nền Vàng Kim mờ */
+}
+
+.quick-checklist .item-name {
+    color: #2C3E50; /* Xanh Navy */
+    font-weight: 500;
+}
+
+/* ẨN CHECKBOX GỐC */
+.ingredient-check {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+/* 1. KHUNG CHECKMARK (Mô phỏng) */
+.checkmark {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #D42D2D; /* Viền Đỏ */
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* 2. HIỂN THỊ DẤU TICK (Khi checkbox được check) */
+.ingredient-check:checked + .checkmark {
+    background-color: #1a8a29; /* Xanh lá cây */
+    border-color: #1a8a29;
+}
+
+.ingredient-check:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* Hiệu ứng gạch ngang khi đã có (Đã kiểm kê) */
+.ingredient-check:checked ~ .item-name {
+    text-decoration: line-through;
+    color: #888;
+    transition: color 0.3s;
+}
+
+/* NÚT MUA CÁC MÓN CÒN THIẾU */
+#buy-missing-btn {
+    width: 100%;
+    margin-top: 15px;
+    background-color: #FF4500; /* Cam Canada */
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 69, 0, 0.4);
+    transition: background-color 0.3s;
+}
+
+.video-guide-section {
+    padding: 80px 20px;
+    background-color: #ffffff; /* Nền trắng sạch sẽ */
+    text-align: center;
+}
+
+.video-guide-section .container-center {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.video-heading {
+    color: #FF4500; /* Màu Cam Canada */
+    font-size: 2.5rem;
+    font-family: 'Times New Roman', serif;
+    margin-bottom: 25px;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Tỷ lệ 16:9 (9/16 = 0.5625) */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Bóng đổ mạnh mẽ */
+    transition: box-shadow 0.3s;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-desc {
+    font-size: 1.1rem;
+    color: #555;
+    font-style: italic;
+}
+ 
